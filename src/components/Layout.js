@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Panel from './Panel';
-import Boxes from './Boxes'
+import Workspace from './Workspace';
+import Sidebar from './Sidebar'
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -9,10 +9,8 @@ class Layout extends Component {
     render() {
         return (
             <div>
-                <Panel float='left' />
-                <Panel float='right' >
-                    <Boxes />
-                </Panel>
+                <Workspace />
+                <Sidebar />
             </div>
         );
     }
