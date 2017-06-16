@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Panel from './Panel';
 import Boxes from './Boxes'
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
-export default class Layout extends Component {
+
+class Layout extends Component {
     render() {
         return (
             <div>
@@ -14,3 +17,5 @@ export default class Layout extends Component {
         );
     }
 }
+
+export default DragDropContext(HTML5Backend) (Layout);

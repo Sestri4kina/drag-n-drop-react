@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ItemTypes } from './ItemTypes';
+import { DropTarget } from 'react-dnd';
 
-export default class Panel extends Component {
+const panelTarget = {
+  drop(props, monitor, component) {
+    if (monitor.didDrop() ) {
+        return;
+    }
+
+    const item = monitor.getItem();
+  }
+};
+
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
+
+class Panel extends Component {
     render() {
-        const { float } = this.props;
-        return (
+        const { float, connectDropTarget, isOver } = this.props;
+        return connectDropTarget(
             <div style={{
                 backgroundColor: '#d3d3d3',
                 borderRadius: '7px',
@@ -20,5 +41,8 @@ export default class Panel extends Component {
 }
 
 Panel.propTypes = {
-    float: PropTypes.string.isRequired
+    float: PropTypes.string.isRequired,
+    isOver: PropTypes.bool.isRequired
 }
+
+export default DropTarget(ItemTypes.BOX, panelTarget, collect)(Panel);
