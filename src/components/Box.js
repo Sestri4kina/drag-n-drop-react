@@ -3,7 +3,27 @@ import PropTypes from 'prop-types';
 import { ItemTypes } from './ItemTypes';
 import { DragSource } from 'react-dnd';
 
-const boxSource = {
+export default class Box extends Component {
+    render() {
+        const { text } = this.props;
+        return (
+            <div style={{
+                backgroundColor: '#4d4dff',
+                borderRadius: '3px',
+                width: '60%',
+                height: '40px',
+                display: 'inline-block',
+                margin: '10px',
+                color: 'white',
+                textAlign: 'center'
+            }}>
+                {text}
+            </div>
+        );
+    }
+}
+
+/*const boxSource = {
     beginDrag(props) {
         return {};
     }
@@ -42,3 +62,5 @@ Box.propTypes = {
 }
 
 export default DragSource(ItemTypes.BOX, boxSource, collect)(Box);
+
+*/
